@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome {% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between">
+    <h1>Success! Welcome, {{ first_name }}!</h1>
+
+    <form action="/logout" method="POST">
+        {% csrf_token %}
+        <button class="linkUnderline btnLink">Log Out</button>
+    </form>
+</div>
+<h4 class="pColor">Successfully registered (or logged in)!</h4>
+
+{% endblock %}

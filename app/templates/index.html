@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %} Login & Registration {% endblock %}
+
+{% block content %}
+
+<div class="box d-inline-block" id="left-box">
+	<h3><b>Registration</b></h3>
+	<br/>
+
+<form action="/create" method="POST">
+{% csrf_token %}
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">First Name</label>
+        <div class="col-sm-6">
+            <input class="form-control" name="first_name" required/>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-6">
+            <input class="form-control" name="last_name" required/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Birthdate</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="date" name="birthdate" required/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-6">
+            <input class="form-control" name="email" required/>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="password" name="password" required/>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Confirm PW</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="password" name="confirm_password" required/>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-7">
+            <input type="submit" class="btnStyle btn btn-secondary" value="Register">
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div class="d-inline-block" id="left-box">
+    <h3><b>Login</b></h3>
+    <br/>
+
+<form action="/login" method="POST">
+{% csrf_token %}
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+            <input class="form-control" name="email" required/>
+        </div>
+    </div> 
+    
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+            <input class="form-control" type="password" name="password" required/>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input type="submit" class="btnStyle btn btn-secondary" value="Log In">
+        </div>
+    </div>
+</form>
+
+</div>
+
+
+<ul>
+    {% if messages %}      
+        {% for message in messages %}         
+            <li class="text-danger messages">{{ message }}</li>
+        {% endfor %} 
+    {% endif %}
+</ul>
+
+{% endblock %}
